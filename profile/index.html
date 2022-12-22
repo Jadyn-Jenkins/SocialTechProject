@@ -5,22 +5,37 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>profile</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <!-- Global CSS (CSS rules you want applied to all pages) -->
+    <link rel="stylesheet" href="">
+    <!-- Page-specific CSS -->
+    <link rel="stylesheet" href="">
+    <!-- Run BEFORE page is finished loading (before window.onload): -->
+    <script src="/scripts/auth.js"></script>
+    <script>
+        if (isLoggedIn() === false) window.location.replace("/");
+    </script>
   </head>
   <body>
     <main id="main">
-      <section id="background"> section-1 for backround image</section>
-      <section id="profile">section-2 for displaying profile block
-        <div>profile card
-            <p id="bio">Web Developer</p>
-            <p id="name">firstName lastName</p>
-            <p id="status">Online</p>
+      <button id="logout" onclick="logout()">LOG OUT</button>
+      <section id="backround"></section>
+
+      <section id="profile">
+        <div id="profileDiv">
+          <div id="profileImg">profile Image goes here</div>
+          <div id="profileName">profile name goes here</div>
+          <form action=""> this is a form to write a post
+            <input id="inputField" type="text" placeholder="What's on your mind ?">
+            <input id="post" type="submit" placeholder="Post">
+          </form>
         </div>
         <button id="goToFeed">Go to Feed</button>
       </section>
-      <section id="userPosts">
-        section-3 for displaying user posts
-        <div>post card</div>
-      </section>
+
+      <section id="userPosts"></section>
     </main>
+
   </body>
 </html>
