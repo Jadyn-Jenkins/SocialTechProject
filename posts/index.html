@@ -9,26 +9,46 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 
     <!-- Global CSS (CSS rules you want applied to all pages) -->
-    <link rel="stylesheet" href="/global.css">
+    <link rel="stylesheet" href="">
 
     <!-- Page-specific CSS -->
-    <link rel="stylesheet" href="posts.css">
+    <link rel="stylesheet" href="">
 
     <title>/POSTS</title>
 
     <!-- Run BEFORE page is finished loading (before window.onload): -->
-    <script src="/auth.js"></script>
+    <script src="/scripts/auth.js"></script>
     <script>
         if (isLoggedIn() === false) window.location.replace("/");
     </script>
 </head>
 <body>
-
+    <button id="logout" onclick="logout()">LOG OUT</button>
     <header>
-        <h1>POSTS PAGE</h1>
+        <!-- <h1>POSTS PAGE</h1> -->
     </header>
 
-    <main></main>
+    <main>
+        <section id="profile">
+            <div>
+                <div id="profileDiv">
+                    <div id="profileImg"></div>
+                    <div id="profileName"></div>
+                </div>
+        </section>
+        
+        <section id="feed">
+
+            <form id="searchForm">
+                <input id="searchField" type="text" placeholder="FIND POST">
+                <button id="searchBtn" type="submit">Replace with ICON</button>
+            </form>
+
+            <div id="posts">
+
+            </div>
+        </section>
+    </main>
 
     <footer></footer>
 
