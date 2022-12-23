@@ -17,10 +17,8 @@ function collectAndSendData(evt) {
     console.log(data.entries()); 
     formJSON = Object.fromEntries(data.entries());
     console.log(formJSON);
-    // postFormData();
-    // getAllUsers();
-    setTimeout(postFormData, 1000);
-    setTimeout(getAllUsers, 2000);
+    setTimeout(postFormData, 300);
+    setTimeout(getAllUsers, 500);
 }
 
 function postFormData() {
@@ -37,6 +35,7 @@ function postFormData() {
     })
 }
 
+//instead of geetting all users use popfunctions instead
 function getAllUsers() {
     fetch(endpoint,options)
     .then(response => response.json())
