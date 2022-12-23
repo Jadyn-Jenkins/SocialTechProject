@@ -20,22 +20,32 @@
   <body>
     <main id="main">
       <button id="logout" onclick="logout()">LOG OUT</button>
-      <section id="backround"></section>
+      <section id="background"></section>
 
       <section id="profile">
         <div id="profileDiv">
-          <div id="profileImg">profile Image goes here</div>
-          <div id="profileName">profile name goes here</div>
-          <form action=""> this is a form to write a post
+          <img id="profileImg">profile Image</img>
+          <p id="profileName">profile name</p>
+            
+          <p id="profileBio">Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+            Eaque quis inventore ab dolores! Dicta mollitia esse 
+            earum illo fugit unde voluptatibus hic sunt sint, sequi 
+            porro voluptatem, tempore laborum officiis?</p>
+            
+            <form id="profileForm" action=""> 
             <input id="inputField" type="text" placeholder="What's on your mind ?">
-            <input id="post" type="submit" placeholder="Post">
+            <input id="postBtn" type="submit" placeholder="Post">
           </form>
         </div>
         <button id="goToFeed">Go to Feed</button>
       </section>
 
-      <section id="userPosts"></section>
-    </main>
+      <section id="feed">
+        <div id="posts"></div>
+      </section>
 
+
+    </main>
+<script src="/scripts/loadProfile.js"></script>
   </body>
 </html>
