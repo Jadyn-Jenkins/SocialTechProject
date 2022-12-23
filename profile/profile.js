@@ -1,24 +1,24 @@
+import { loadProfile, loginData } from "/scripts/loadProfile.js";
+import { popPosts } from "/scripts/populatePosts.js";
 
 document.querySelector('#profileForm').addEventListener('submit', collectAndSendData);
-document.querySelector('#goToFeed').addEventListener('click', getAllUsers);
-
-const endpoint = 'https://microbloglite.herokuapp.com/api/posts'
-const loginData = JSON.parse(window.localStorage.getItem("login-data"))
-const options = { 
-    method: "GET",
-    headers: {Authorization: `Bearer ${loginData.token}`},
+document.querySelector('#goToFeed').addEventListener('click', () =>  window.location.assign("/posts"));
+window.onload = () => {
+    loadProfile();
+    popPosts(loginData.username);
 };
 
 let formJSON;
+const endpoint = 'https://microbloglite.herokuapp.com/api/posts'
+
 function collectAndSendData(evt) {
-    console.log('Collecting data .........................');
     evt.preventDefault();
+   
     const data = new FormData(evt.target);
-    console.log(data.entries()); 
     formJSON = Object.fromEntries(data.entries());
-    console.log(formJSON);
+    
     setTimeout(postFormData, 300);
-    setTimeout(getAllUsers, 500);
+    setTimeout(() => {popPosts(loginData.username)}, 500);
 }
 
 function postFormData() {
@@ -34,12 +34,3 @@ function postFormData() {
         'Unexpected Error';
     })
 }
-
-//instead of geetting all users use popfunctions instead
-function getAllUsers() {
-    fetch(endpoint,options)
-    .then(response => response.json())
-    .then(data => console.log(data))
-}
-
-
