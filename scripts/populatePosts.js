@@ -1,6 +1,6 @@
 
 export function popPosts(specificUser) {
-    const postField = document.querySelector('#feed');
+    const postField = document.querySelector('#posts');
     const endpoint = "https://microbloglite.herokuapp.com/api/posts";
     const loginData = JSON.parse(window.localStorage.getItem("login-data"))
     
