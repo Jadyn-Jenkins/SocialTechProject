@@ -17,7 +17,8 @@
     <link rel="stylesheet" href="/global.css" />
 
     <!-- Page-specific CSS -->
-    <link rel="stylesheet" href="" />
+    <link rel="stylesheet" href="index.css" />
+
 
     <title>Login to the Microblog Network!</title>
 
@@ -28,45 +29,53 @@
     </script>
   </head>
   <body>
-    <header>
-      <h1>WELCOME TO <code>THE SOCIAL</code></h1>
-    </header>
 
     <main>
-       <h3>ABOUT US</h3>
-       <p></p>
-      <div>
-        <p>NEW USER?</p>
-        <button>SIGN UP</button>
-      </div>
-      <br />
+      <section id="hero_img_sec">
+        <h1>THE SOCIAL</h1>
+        <img src="/img/loginhero.png" alt="">
+        <h3>Revolutionizing Social Media</h3>
+        <button class="learn-more">
+          <span class="circle" aria-hidden="true">
+          <span class="icon arrow"></span>
+          </span>
+          <span class="button-text">Learn More</span>
+        </button>
+      </section>
 
-      <form id="login" class="form">
-        <div>
+      <section id="triangle-up">
+
+      </section>
+      
+      <section id="form_sec">
+
+        <div id="new_user">
+          <p>NEW USER?</p>
+            <a href="/registration/index.html">
+              <button>Sign Up
+                <div  class="arrow-wrapper">
+                <div class="arrow"></div>
+              </button>
+            </a>
+
+        </button>
+        </div>
+
+        <form id="login" class="form">
+
           <!-- <label for="username">Username</label> -->
-          <input
-            type="text"
-            placeholder="USERNAME"
-            id="username"
-            minlength="3"
-          />
-        </div>
+          <input type="text" placeholder="USERNAME" id="username" minlength="3"/>
 
-        <div>
           <!-- <label for="password">Password</label> -->
-          <input
-            type="password"
-            placeholder="PASSWORD"
-            id="password"
-            minlength="6"
-          />
-        </div>
+          <input type="password" placeholder="PASSWORD" id="password" minlength="6" />
 
-        <div>
           <button id="loginButton" type="submit">LOGIN</button>
-          <a href="">Forgot Password?</a>
-        </div>
+          
+          <p>Forgot Password? <span><a href="/registration/index.html">Click Here</a></span></p>
       </form>
+
+      </section>
+
     </main>
 
     <footer></footer>
