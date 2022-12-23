@@ -1,4 +1,6 @@
+
 export function loadProfile() {
+
     const loginData = JSON.parse(window.localStorage.getItem("login-data"))
     const endpoint = `https://microbloglite.herokuapp.com/api/users/${loginData.username}`;
 
