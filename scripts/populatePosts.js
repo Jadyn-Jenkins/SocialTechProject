@@ -19,7 +19,7 @@ export function popPosts(specificUser) {
         console.trace(data)
         
         data.forEach(item => {
-            const creationDate = item.createdAt;
+            const creationDate = new Date(item.createdAt);
             const likes = item.likes;
             const username = item.username;
             const postId = item._id;
@@ -55,7 +55,8 @@ export function popPosts(specificUser) {
             
             let timestamp = document.createElement('p');
             timestamp.id = "timestamp";
-            timestamp.innerText = new Date(creationDate);
+            // Aiming at 1:14 PM - 26 Feb 2019
+            timestamp.innerText = getPostDate(creationDate);
             card.appendChild(timestamp);
             
             postField.insertBefore(card, postField.firstChild);
@@ -63,3 +64,22 @@ export function popPosts(specificUser) {
     });
 }
 
+function getPostDate(date) {
+    // Aiming at 1:14 PM - 26 Feb 2019
+    
+    let options = {
+        hour12: true,
+        hourCycle: "h12",
+        hour:"numeric",
+        minute:"numeric",
+
+        day:"numeric",
+        month: "short",
+        year: "numeric",
+
+    }   
+    date = new Intl.DateTimeFormat('en', options).format(date).split(",");
+    // ['Jan 1', ' 2023', ' 12:31 PM']
+    date = `${date[1]} ${date[0]} -${date[2]}`;
+    return date;
+}
