@@ -17,7 +17,9 @@ export function popPosts(specificUser) {
     .then(data => {
         if (specificUser) data = data.filter(post => post.username == specificUser);
         console.trace(data)
-        
+   
+
+  
         data.forEach(item => {
             const creationDate = item.createdAt;
             const likes = item.likes;
@@ -60,6 +62,49 @@ export function popPosts(specificUser) {
             
             postField.insertBefore(card, postField.firstChild);
         })
+        // like button functionality      
+
+ const likeEndpoint = "https://microbloglite.herokuapp.com/api/likes";
+ const likeOptions = { 
+    method: "POST",
+    headers: {
+        Authorization: `Bearer ${loginData.token}`,
+        "Content-Type": `application/json; charset=utf-8`
+    },
+    body: JSON.stringify({
+        postId: "63b45a525f3f1f9a69508923"
+       
+      }),
+
+};
+ fetch(likeEndpoint,likeOptions)
+ .then(results => results.json())
+ .then((data) => {
+     console.log(data)
+ 
+ 
+    setLikeCounter(data,id,likeCount)
+ 
+ })
+ function setLikeCounter(data,id, likeCount){
+     const likedPost = data.find(
+         (element) => element["id"] === id.innerText
+     );
+     if(typeof likedPost === "undefined"){
+         likeCount.innerText = "0 likes";
+     }else if (likedPost["likes"] === 1){
+         likeCount.innerText = "1 like";
+     }else {
+         likeCount.innerText = `${likedPost["likes"]} likes`;
+     }
+
+    }
+
     });
+ 
 }
+    
+
+
+
 
