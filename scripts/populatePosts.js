@@ -30,7 +30,7 @@ export function popPosts(specificUser) {
             card.value = postId;
             
             let profileDiv = document.createElement('div');
-            profileDiv.id = "profileDiv";
+            profileDiv.id = "userProfile";
             card.appendChild(profileDiv);
 
             let profilePicField = document.createElement('img');
