@@ -29,24 +29,32 @@ export function popPosts(specificUser) {
             card.id = "post";
             card.value = postId;
             
+            let profileDiv = document.createElement('div');
+            profileDiv.id = "profileDiv";
+            card.appendChild(profileDiv);
+
             let profilePicField = document.createElement('img');
             profilePicField.id = "profilePic";
-            card.appendChild(profilePicField);
+            profileDiv.appendChild(profilePicField);
             
             let usernameField = document.createElement('p');
             usernameField.id = "usernameField";
             usernameField.innerText = username;
-            card.appendChild(usernameField);
+            profileDiv.appendChild(usernameField);
             
+            let likeDiv = document.createElement('div');
+            likeDiv.id = "likeDiv";
+            card.appendChild(likeDiv);
+
             let likeIcon = document.createElement('img');
             likeIcon.id = "likeIcon";
             // likeIcon.src = Place src to like icon here
-            card.appendChild(likeIcon); 
+            likeDiv.appendChild(likeIcon); 
             
             let likeCount = document.createElement('p')
             likeCount.id = "likeCount";
             likeCount.innerText = likes.length;
-            card.appendChild(likeCount);
+            likeDiv.appendChild(likeCount);
             
             let postTxt = document.createElement('p');
             postTxt.id = "postTxt";
