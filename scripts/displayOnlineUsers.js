@@ -20,7 +20,12 @@ export function showOnlinePerson() {
       .then((results) => results.json())
       .then((data) => {
         data.forEach(arrItem => {
-            console.log(arrItem);
+             //for calculating date
+            let miliSecToSee  = 18000000;
+            let  actualPostTime = arrItem.createdAt;
+            let postTimeMilSec = new Date(actualPostTime).getTime();
+            let currentTime = new Date();
+            let miliSecCurrentTime = currentTime.getTime();
             
         });
     });
