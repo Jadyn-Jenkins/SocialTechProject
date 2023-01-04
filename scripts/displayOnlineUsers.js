@@ -55,7 +55,10 @@ export function showOnlinePerson() {
                
                     childElement.appendChild(imgTagOnline);
                     onlineUsesr.appendChild(childElement);
-                }
+            }
+            else {
+                onlineUsesr.style.display = "none";
+            }
             
         });
     });
