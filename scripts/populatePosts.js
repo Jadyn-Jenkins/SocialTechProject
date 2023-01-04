@@ -29,22 +29,26 @@ export function popPosts(specificUser) {
             card.id = "post";
             card.value = postId;
             
-            let profileDiv = document.createElement('div');
-            profileDiv.id = "userProfile";
-            card.appendChild(profileDiv);
+            let profileHeader = document.createElement('div');
+            profileHeader.id = "profileHeader";
+            card.appendChild(profileHeader);
+
+            let userProfile = document.createElement('div');
+            userProfile.id = "userProfile";
+            profileHeader.appendChild(userProfile);
 
             let profilePicField = document.createElement('img');
             profilePicField.id = "profilePic";
-            profileDiv.appendChild(profilePicField);
+            userProfile.appendChild(profilePicField);
             
             let usernameField = document.createElement('p');
             usernameField.id = "usernameField";
             usernameField.innerText = username;
-            profileDiv.appendChild(usernameField);
+            userProfile.appendChild(usernameField);
             
             let likeDiv = document.createElement('div');
             likeDiv.id = "likeDiv";
-            card.appendChild(likeDiv);
+            profileHeader.appendChild(likeDiv);
 
             let likeIcon = document.createElement('img');
             likeIcon.id = "likeIcon";
@@ -55,21 +59,17 @@ export function popPosts(specificUser) {
             likeCount.id = "likeCount";
             likeCount.innerText = likes.length;
             likeDiv.appendChild(likeCount);
-
-            let textPostDiv = document.createElement('div');
-            textPostDiv.id = "textPostDiv";
-            card.appendChild(textPostDiv);
             
             let postTxt = document.createElement('p');
             postTxt.id = "postTxt";
             postTxt.innerText = postText;
-            textPostDiv.appendChild(postTxt);
+            card.appendChild(postTxt);
             
             let timestamp = document.createElement('p');
             timestamp.id = "timestamp";
             // Aiming at 1:14 PM - 26 Feb 2019
             timestamp.innerText = getPostDate(creationDate);
-            textPostDiv.appendChild(timestamp);
+            card.appendChild(timestamp);
             
             postField.insertBefore(card, postField.firstChild);
         })
