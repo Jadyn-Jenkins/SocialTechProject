@@ -26,10 +26,17 @@
         <div id="profileDiv">
           <img id="profileImg">Image</img>
           <p id="profileName">UserName</p>
-            
+          <button id="updateLink">Update Account Info</button>
           <p id="profileBio">Lorem ipsum, dolor sit</p>
-            
-            <form id="profileForm" action=""> 
+          
+          <form id="updateAccountForm" hidden>
+            <input type="text" id="fullNameUpdateField" name="fullName" placeholder="Change FullName">
+            <input type="text" id="passwordUpdateField" name="password" placeholder="Change Password">
+            <textarea id="bioUpdateField" name="bio" cols="30" rows="3" placeholder="Update Biography"></textarea>
+            <button id="updateBtn" type="submit">Update Account</button>
+          </form>
+
+          <form id="profileForm"> 
             <input id="inputField" type="text" name="text" placeholder="What's on your mind ?">
             <input id="postBtn" type="submit" placeholder="Post">
           </form>
