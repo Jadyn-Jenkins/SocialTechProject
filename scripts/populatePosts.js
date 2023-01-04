@@ -55,17 +55,21 @@ export function popPosts(specificUser) {
             likeCount.id = "likeCount";
             likeCount.innerText = likes.length;
             likeDiv.appendChild(likeCount);
+
+            let textPostDiv = document.createElement('div');
+            textPostDiv.id = "textPostDiv";
+            card.appendChild(textPostDiv);
             
             let postTxt = document.createElement('p');
             postTxt.id = "postTxt";
             postTxt.innerText = postText;
-            card.appendChild(postTxt);
+            textPostDiv.appendChild(postTxt);
             
             let timestamp = document.createElement('p');
             timestamp.id = "timestamp";
             // Aiming at 1:14 PM - 26 Feb 2019
             timestamp.innerText = getPostDate(creationDate);
-            card.appendChild(timestamp);
+            textPostDiv.appendChild(timestamp);
             
             postField.insertBefore(card, postField.firstChild);
         })
