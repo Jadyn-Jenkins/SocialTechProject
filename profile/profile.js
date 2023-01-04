@@ -58,9 +58,10 @@ function showUpdateFields(){
     .then(data => {
         console.log(data);
 
-        document.querySelector('#fullNameUpdateField').value = ;
-        document.querySelector('#passwordUpdateField').value = ;
-        document.querySelector('#bioUpdateField').value = ;
+        document.querySelector('#fullNameUpdateField').value = data.fullName;
+        document.querySelector('#passwordUpdateField').value = 'MUST CHANGE PASSWORD';
+        document.querySelector('#bioUpdateField').value = data.bio;
+        updateForm.hidden = false;
     })
     .catch(error => {
         console.log(error);
@@ -71,7 +72,7 @@ function showUpdateFields(){
     
     
 
-    updateForm.hidden = false;
+    
 }
 
 function updateAccount(evt) {
