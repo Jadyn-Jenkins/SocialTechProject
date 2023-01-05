@@ -2,8 +2,10 @@
 
 "use strict";
 
+/* Global Variables */
 const loginForm = document.querySelector("#login");
 
+/* Event Handlers */
 loginForm.onsubmit = function (event) {
     // Prevent the form from refreshing the page,
     // as it will do by default when the Submit event is triggered:
@@ -11,6 +13,8 @@ loginForm.onsubmit = function (event) {
 
     // We can use loginForm.username (for example) to access
     // the input element in the form which has the ID of "username".
+    
+    /* Scoped Variables */
     const loginData = {
         username: loginForm.username.value,
         password: loginForm.password.value,

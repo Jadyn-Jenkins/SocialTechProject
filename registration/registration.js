@@ -1,8 +1,32 @@
+/* Registration Page JavaScript */
+
+"use strict";
+
+/* Global Variables */
 const api = "https://microbloglite.herokuapp.com";
 const signUpForm = document.querySelector("#register");
 
+/* Event Handlers */
+signUpForm.onsubmit = function (event) {
+  event.preventDefault();
+
+  /* Scoped Variables */
+  const registerData = {
+    fullName: signUpForm.fname.value,
+    username: signUpForm.uname.value,
+    password: signUpForm.password.value,
+  };
+
+  signUpForm.registerBtn.disabled = true;
+
+  registerUser(registerData);
+  window.alert("Your account has been created")
+};
+
+/* Functions */
 function registerUser(registerData) {
-  const options = {
+  /* Scoped Variables */
+  const POSToptions = {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -14,7 +38,7 @@ function registerUser(registerData) {
     }),
   };
 
-  fetch(api + "/api/users", options)
+  fetch(api + "/api/users", POSToptions)
     .then((response) => response.json())
     .then((registerData) => {
       window.localStorage.setItem(
@@ -24,18 +48,4 @@ function registerUser(registerData) {
       window.location.assign("/index.html"); // redirect
     });
 }
-signUpForm.onsubmit = function (event) {
-  event.preventDefault();
 
-  const registerData = {
-    fullName: signUpForm.fname.value,
-    username: signUpForm.uname.value,
-    password: signUpForm.password.value,
-  };
-
-  signUpForm.registerBtn.disabled = true;
-
-  registerUser(registerData);
-  window.alert("Your account has been created")
-
-};
