@@ -3,8 +3,13 @@ export function popPosts(specificUser) {
   const endpoint = "https://microbloglite.herokuapp.com/api/posts";
   const loginData = JSON.parse(window.localStorage.getItem("login-data"));
 
-  //Clear the html out of PostField
-  postField.innerHTML = "";
+    //Clear the html out of PostField
+    postField.innerHTML = "";
+
+    const options = { 
+        method: "GET",
+        headers: {Authorization: `Bearer ${loginData.token}`},
+    };
 
     fetch(endpoint, options)
     .then(results => results.json())
