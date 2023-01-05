@@ -64,35 +64,19 @@ export function popPosts(specificUser) {
       });
       let likePosts = document.querySelectorAll("#likeIcon");
       likePosts.forEach(post => {
-        post.addEventListener("click", setLikeCounter);
-
-        
+      post.addEventListener("click", setLikeCounter); 
       }) 
       
     });
 }
+// like button functionality
 function setLikeCounter(event) {
     console.log("button is working",event.target.dataset.postid);
      
     let updatedLike = updateLike(event.target.dataset.postid)
-    // updatedLike.then(data=>{
-      
 
-    // })
-
-
-    
-    
-    // const likedPost = data.find((element) => element["id"] === id.innerText);
-    // if (typeof likedPost === "undefined") {
-    //   likeCount.innerText = "0 likes";
-    // } else if (likedPost["likes"] === 1) {
-    //   likeCount.innerText = "1 like";
-    // } else {
-    //   likeCount.innerText = `${likedPost["likes"]} likes`;
-    // }
   }
-// like button functionality
+
 function updateLike(postId) {
     const loginData = JSON.parse(window.localStorage.getItem("login-data"));
 
