@@ -39,11 +39,23 @@ function login (loginData) {
     };
 
     return fetch(api + "/auth/login", options)
+        // .then(response => response.json())
+        // .then(loginData => {
+        //     window.localStorage.setItem("login-data", JSON.stringify(loginData));
+        //     window.location.assign("/posts");  // redirect
+        // });
+
         .then(response => response.json())
         .then(loginData => {
-            window.localStorage.setItem("login-data", JSON.stringify(loginData));
+            if (loginData.statusCode === 200) {
+                window.localStorage.setItem("login-data", JSON.stringify(loginData));
             window.location.assign("/posts");  // redirect
-        });
+            }
+            else {
+                window.alert('Invalid Username or Password');
+            }
+            
+        })
 }
 
 
