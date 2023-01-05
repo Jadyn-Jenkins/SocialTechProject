@@ -22,6 +22,9 @@ window.onload = () => {
   popPosts(loginData.username);
 };
 
+/* Update Form reaction */
+
+
 /* Functions */
 function collectAndSendData(evt) {
   evt.preventDefault();
@@ -61,7 +64,11 @@ function showUpdateFields() {
       Authorization: `Bearer ${loginData.token}`,
     },
   };
+  const updateAccountForm = document.querySelector('#updateAccountForm');
 
+if (updateAccountForm.hidden) {
+  document.querySelector("#updateLink").innerHTML = "Cancel Update";
+  document.querySelector('#profile').style.height = "750px"
   fetch(`${endpoint}${updateUserLocation}${loginData.username}`, GEToptions)
     .then((response) => response.json())
     .then((data) => {
@@ -73,6 +80,12 @@ function showUpdateFields() {
       console.log(error);
       ("Unexpected Error");
     });
+} else {
+  document.querySelector("#updateLink").innerHTML = "Update Account Info";
+  updateForm.hidden = true;
+  document.querySelector('#profile').style.height = "550px";
+}
+
 }
 
 function updateAccount(evt) {
