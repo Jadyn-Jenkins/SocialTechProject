@@ -6,67 +6,74 @@ export function popPosts(specificUser) {
   //Clear the html out of PostField
   postField.innerHTML = "";
 
-  const options = {
-    method: "GET",
-    headers: { Authorization: `Bearer ${loginData.token}` },
-  };
+    fetch(endpoint, options)
+    .then(results => results.json())
+    .then(data => {
+        if (specificUser) data = data.filter(post => post.username == specificUser);
+        console.trace(data)
+        
+        data.forEach(item => {
+            const creationDate = new Date(item.createdAt);
+            const likes = item.likes;
+            const username = item.username;
+            const postId = item._id;
+            const postText = item.text;
 
-  fetch(endpoint, options)
-    .then((results) => results.json())
-    .then((data) => {
-         if (specificUser)
-        data = data.filter((post) => post.username == specificUser);
-      console.trace(data);
+            let card = document.createElement('div');
+            card.id = "post";
+            card.value = postId;
+            
+            let profileHeader = document.createElement('div');
+            profileHeader.id = "profileHeader";
+            card.appendChild(profileHeader);
 
-      data.forEach((item) => {
-        const creationDate = item.createdAt;
-        const likes = item.likes;
-        const username = item.username;
-        const postId = item._id;
-        const postText = item.text;
+            let userProfile = document.createElement('div');
+            userProfile.id = "userProfile";
+            profileHeader.appendChild(userProfile);
 
-        let card = document.createElement("div");
-        card.id = "post";
-        card.value = postId;
+            let profilePicField = document.createElement('img');
+            profilePicField.id = "profilePic";
+            userProfile.appendChild(profilePicField);
+            
+            let usernameField = document.createElement('p');
+            usernameField.id = "usernameField";
+            usernameField.innerText = username;
+            userProfile.appendChild(usernameField);
+            
+            let likeDiv = document.createElement('div');
+            likeDiv.id = "likeDiv";
+            profileHeader.appendChild(likeDiv);
 
-        let profilePicField = document.createElement("img");
-        profilePicField.id = "profilePic";
-        card.appendChild(profilePicField);
-
-        let usernameField = document.createElement("p");
-        usernameField.id = "usernameField";
-        usernameField.innerText = username;
-        card.appendChild(usernameField);
-
-        let likeIcon = document.createElement("img");
-        likeIcon.id = "likeIcon";
-        likeIcon.dataset.postid = postId
-        likeIcon.src = "/img/like-icon.jpg";
-        card.appendChild(likeIcon);
-
-        let likeCount = document.createElement("p");
-        likeCount.id = "likeCount";
-        likeCount.dataset.countpostid = postId
-        likeCount.innerText = likes.length;
-        card.appendChild(likeCount);
-
-        let postTxt = document.createElement("p");
-        postTxt.id = "postTxt";
-        postTxt.innerText = postText;
-        card.appendChild(postTxt);
-
-        let timestamp = document.createElement("p");
-        timestamp.id = "timestamp";
-        timestamp.innerText = new Date(creationDate);
-        card.appendChild(timestamp);
-
-        postField.insertBefore(card, postField.firstChild);
+            let likeIcon = document.createElement('img');
+            likeIcon.id = "likeIcon";
+            likeIcon.dataset.postid = postId
+            likeIcon.src = "/img/like-icon.jpg";
+            likeDiv.appendChild(likeIcon); 
+            
+            let likeCount = document.createElement('p')
+            likeCount.id = "likeCount";
+            likeCount.dataset.countpostid = postId
+            likeCount.innerText = likes.length;
+            likeDiv.appendChild(likeCount);
+            
+            let postTxt = document.createElement('p');
+            postTxt.id = "postTxt";
+            postTxt.innerText = postText;
+            card.appendChild(postTxt);
+            
+            let timestamp = document.createElement('p');
+            timestamp.id = "timestamp";
+            // Aiming at 1:14 PM - 26 Feb 2019
+            timestamp.innerText = getPostDate(creationDate);
+            card.appendChild(timestamp);
+            
+            postField.insertBefore(card, postField.firstChild);
       });
       let likePosts = document.querySelectorAll("#likeIcon");
       likePosts.forEach(post => {
-      post.addEventListener("click", setLikeCounter); 
-      }) 
-      
+      post.addEventListener("click", setLikeCounter);
+        })
+
     });
 }
 // like button functionality
@@ -111,3 +118,22 @@ function updateLike(postId) {
 
 
 
+function getPostDate(date) {
+    // Aiming at 1:14 PM - 26 Feb 2019
+    
+    let options = {
+        hour12: true,
+        hourCycle: "h12",
+        hour:"numeric",
+        minute:"numeric",
+
+        day:"numeric",
+        month: "short",
+        year: "numeric",
+
+    }   
+    date = new Intl.DateTimeFormat('en', options).format(date).split(",");
+    // ['Jan 1', ' 2023', ' 12:31 PM']
+    date = `${date[1]} ${date[0]} -${date[2]}`;
+    return date;
+}

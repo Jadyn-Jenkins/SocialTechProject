@@ -29,17 +29,15 @@ main {
 }
 
 #hero_img_sec > h3{
+
+  margin-top: 4em;
   color: rgb(0, 0, 0);
 }
 
-h1 > span{
-  color: #ec4848;
-  text-transform: uppercase;
-  border: 1px solid white;
-  background-color: #282936;
-  width: 500px;
-
+img {
+  width: 800px;
 }
+
 
 #form_sec {
   width: 30em;
@@ -50,6 +48,7 @@ h1 > span{
   background-color: rgba(177, 173, 211, 0.262);
   backdrop-filter: blur(14px);
   border-radius: .8em;
+  height: 35em;
 }
 
 #new_user {
@@ -137,7 +136,7 @@ form {
   display: flex;
   flex-direction: column;
   margin: auto;
-  margin-top: 10em;
+  margin-top: 3em;
   width: 20em;
 }
 
@@ -219,7 +218,7 @@ form > button {
 
 form > p {
   margin: auto;
-  margin-top: 18em;
+  margin-top: 10em;
   margin-bottom: 1em;
   font-weight: 700;
   color: #000;
