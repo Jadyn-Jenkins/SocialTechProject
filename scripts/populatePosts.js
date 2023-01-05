@@ -6,7 +6,7 @@
 export function popPosts(specificUser) {
   /* Scoped Variables */
   const postField = document.querySelector("#posts");
-  const endpoint = "https://microbloglite.herokuapp.com/api/posts";
+  const endpoint = "https://microbloglite.herokuapp.com/api/posts?limit=5000000";
   const loginData = JSON.parse(window.localStorage.getItem("login-data"));
   const options = { 
     method: "GET",
@@ -21,7 +21,6 @@ export function popPosts(specificUser) {
     .then(data => {
       /* Filtering User's posts from server*/
         if (specificUser) data = data.filter(post => post.username == specificUser);
-        
         /* Creates Post object in DOM */
         data.forEach(item => {
             const creationDate = new Date(item.createdAt);

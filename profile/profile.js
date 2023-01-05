@@ -1,5 +1,4 @@
 /* Profile Page JavaScript */
-
 "use strict";
 
 /* Imported Global */
@@ -32,9 +31,7 @@ function collectAndSendData(evt) {
   formJSON = Object.fromEntries(data.entries());
 
   setTimeout(postFormData, 300);
-  setTimeout(() => {
-    popPosts(loginData.username);
-  }, 500);
+  setTimeout(() => popPosts(loginData.username), 500);
 }
 
 function postFormData() {
@@ -48,7 +45,8 @@ function postFormData() {
     }
   };
 
-  fetch(`${endpoint}${postsLocation}`, POSToptions).catch((error) => {
+  fetch(`${endpoint}${postsLocation}`, POSToptions)
+  .catch((error) => {
     console.log(error);
     ("Unexpected Error");
   });
