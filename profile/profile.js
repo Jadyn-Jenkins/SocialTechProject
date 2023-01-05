@@ -50,7 +50,29 @@ function postFormData() {
     }
 */
 function showUpdateFields(){
-    updateForm.hidden = false;
+    fetch(`${endpoint}${updateUserLocation}${localData.username}`,{
+        method: "GET",
+        headers:{"Content-type": "application/json; charset=UTF-8", Authorization: `Bearer ${loginData.token}`}
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+
+        document.querySelector('#fullNameUpdateField').value = data.fullName;
+        document.querySelector('#passwordUpdateField').value = 'MUST CHANGE PASSWORD';
+        document.querySelector('#bioUpdateField').value = data.bio;
+        updateForm.hidden = false;
+    })
+    .catch(error => {
+        console.log(error);
+        'Unexpected Error';
+    })
+
+    
+    
+    
+
+    
 }
 
 function updateAccount(evt) {
