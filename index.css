@@ -7,11 +7,11 @@ body {
   z-index: -1;
   width: 0;
   height: 0;
-  border-left: 300px solid transparent;
-  border-right: 800px solid transparent;
-  border-bottom:1040px solid rgb(13, 85, 153);
+  border-left: 550px solid transparent;
+  border-right: 550px solid transparent;
+  border-bottom:935px solid rgb(13, 85, 153);
   top: 0;
-  right: 50px;
+  right: 90px;
   
 }
 

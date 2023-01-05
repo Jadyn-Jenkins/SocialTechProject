@@ -5,7 +5,7 @@ body {
 
 #shape {
     width: 1000px;
-    height: 1040px;
+    height: 937px;
     z-index: -1;
     transform: skew(-20deg);
     background: rgb(74, 95, 252);
