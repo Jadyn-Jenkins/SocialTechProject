@@ -1,6 +1,10 @@
 
-let postSection2 = document.getElementById('postSection2');
+let postSection2 = document.getElementById("postSection2");
 console.log(postSection2);
+
+let profileDiv = document.getElementById("profileDiv");
+console.log(profileDiv);
+
 
 export function showOnlinePerson() {
     let allOnlineUsers = [];
@@ -32,6 +36,7 @@ export function showOnlinePerson() {
               imgElement.alt = "profile picture";
               childElement.appendChild(imgElement);
               const pElement = document.createElement("p");
+              pElement.classList.add("p");
               pElement.innerText = `${arrItem.username}`;
               childElement.appendChild(pElement);
               const imgTagOnline = document.createElement("img");
@@ -40,8 +45,8 @@ export function showOnlinePerson() {
               imgTagOnline.alt = "green-online-picture";
   
               childElement.appendChild(imgTagOnline);
-              postSection2.appendChild(childElement);
-              postSection2.style.display = "flex";
+              profileDiv.appendChild(childElement);
+              profileDiv.style.display = "flex";
             //   window.location.reload(true);
             }
           }
