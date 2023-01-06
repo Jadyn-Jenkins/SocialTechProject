@@ -4,6 +4,7 @@ main {
   justify-content: space-between;
   background-image: url(/img/backgroundimg.png);
   background-size: cover;
+  height:100vh;
 }
 
 #logout {
@@ -198,7 +199,7 @@ a {
 
 #posts {
   width: 700px;
-  height: 865px;
+  height: 98vh;
   display: flex;
   flex-direction: column;
   margin-top: 1em;
