@@ -1,22 +1,27 @@
+/* Global JavaScript found in Post and Profile Page*/
+
+"use strict";
+
+/* Functions */
 export function popPosts(specificUser) {
+  /* Scoped Variables */
   const postField = document.querySelector("#posts");
-  const endpoint = "https://microbloglite.herokuapp.com/api/posts";
+  const endpoint = "https://microbloglite.herokuapp.com/api/posts?limit=5000000";
   const loginData = JSON.parse(window.localStorage.getItem("login-data"));
+  const options = { 
+    method: "GET",
+    headers: {Authorization: `Bearer ${loginData.token}`},
+  };
 
-    //Clear the html out of PostField
-    postField.innerHTML = "";
-
-    const options = { 
-        method: "GET",
-        headers: {Authorization: `Bearer ${loginData.token}`},
-    };
+  //Clear the html out of PostField
+  postField.innerHTML = "";
 
     fetch(endpoint, options)
     .then(results => results.json())
     .then(data => {
+      /* Filtering User's posts from server*/
         if (specificUser) data = data.filter(post => post.username == specificUser);
-        console.trace(data)
-        
+        /* Creates Post object in DOM */
         data.forEach(item => {
             const creationDate = new Date(item.createdAt);
             const likes = item.likes;
@@ -74,26 +79,26 @@ export function popPosts(specificUser) {
             
             postField.insertBefore(card, postField.firstChild);
       });
+
+      /* Scoped Variables */
       let likePosts = document.querySelectorAll("#likeIcon");
+      
+      /* Scoped Event Handlers */
       likePosts.forEach(post => {
       post.addEventListener("click", setLikeCounter);
         })
 
     });
 }
-// like button functionality
-function setLikeCounter(event) {
-    console.log("button is working",event.target.dataset.postid);
-     
-    let updatedLike = updateLike(event.target.dataset.postid)
 
+function setLikeCounter(event) {
+    updateLike(event.target.dataset.postid)
   }
 
 function updateLike(postId) {
+  /* Scoped Variables */
     const loginData = JSON.parse(window.localStorage.getItem("login-data"));
-
     const likeEndpoint = "https://microbloglite.herokuapp.com/api/likes";
-
     const likeOptions = {
       method: "POST",
       headers: {
@@ -102,30 +107,24 @@ function updateLike(postId) {
       },
       body: JSON.stringify({
         postId: postId
-        
-      }),
+      })
     };
 
-     return fetch(likeEndpoint, likeOptions)
+    fetch(likeEndpoint, likeOptions)
       .then((results) => results.json())
       .then((data) => {
-        console.log(data);
         JSON.stringify(data);
         let counter = document.querySelector(`[data-countpostid="${postId}"]`)
        
-        if (data.statusCode != 400) {
-            
-        counter.innerText++
-        }
+        if (data.statusCode != 400) counter.innerText++;
       });
     
   }
 
+  function getPostDate(date) {
+  // Aiming at Formating like: "1:14 PM - 26 Feb 2019"
 
-
-function getPostDate(date) {
-    // Aiming at 1:14 PM - 26 Feb 2019
-    
+    /* Scoped Variables */
     let options = {
         hour12: true,
         hourCycle: "h12",
@@ -136,9 +135,10 @@ function getPostDate(date) {
         month: "short",
         year: "numeric",
 
-    }   
+    }  
+     
     date = new Intl.DateTimeFormat('en', options).format(date).split(",");
-    // ['Jan 1', ' 2023', ' 12:31 PM']
     date = `${date[1]} ${date[0]} -${date[2]}`;
+
     return date;
 }

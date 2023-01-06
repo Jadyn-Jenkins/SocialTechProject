@@ -18,7 +18,7 @@ export function showOnlinePerson() {
       .then((results) => results.json())
       .then((data) => {
         data.forEach((arrItem) => {
-          let hourToShowOnline = 4;
+          let hourToShowOnline = 0.5;
           let actualPostTime = arrItem.createdAt;
           let postTimeMilSec = new Date(actualPostTime).getTime();
           let increasePostTime = postTimeMilSec + hourToShowOnline * 60 * 60 * 1000;
