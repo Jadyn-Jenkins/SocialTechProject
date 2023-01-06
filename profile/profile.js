@@ -32,7 +32,7 @@ function collectAndSendData(evt) {
   /* Scoped Variables */
   const data = new FormData(evt.target);
   formJSON = Object.fromEntries(data.entries());
-
+  document.getElementById('inputField').value = '';
   setTimeout(postFormData, 300);
   setTimeout(() => popPosts(loginData.username), 500);
 }
