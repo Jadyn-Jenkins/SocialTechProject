@@ -3,12 +3,14 @@ main {
   justify-content: space-between;
   background-image: url(/img/backgroundimg.png);
   background-size: cover;
+   height:100vh;
+
 }
 
 #logout {
     margin-top: 1em;
     right: 5em;
-    position: absolute;
+    position: fixed;
     display: inline-block;
     cursor: pointer;
     outline: none;
@@ -261,9 +263,9 @@ a {
   padding: 2px 2px;
   border: unset;
   border-radius: 15px;
-  color: #212121;
+  color: #000000;
   z-index: 1;
-  background: #e8e8e8;
+  background: rgb(148, 166, 225);
   position: relative;
   font-weight: 1000;
   font-size: 13px;
@@ -303,9 +305,9 @@ a {
   padding: 2px 2px;
   border: unset;
   border-radius: 15px;
-  color: #212121;
+  color: rgb(0, 0, 0);
   z-index: 1;
-  background: #e8e8e8;
+  background: #bbd3ff;
   position: relative;
   font-weight: 1000;
   font-size: 13px;
@@ -363,7 +365,7 @@ a {
 
 #posts {
   width: 700px;
-  height: 865px;
+  height: 98vh;
   display: flex;
   flex-direction: column;
   margin-top: 1em;
@@ -413,7 +415,7 @@ a {
   display: flex;
 }
 #likeIcon {
-  background-image: url(/img/like.png);
+  /* background-image: url(/img/like.png); */
   width: 25px;
   height: 25px;
   background-size: 25px 25px;
