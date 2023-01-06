@@ -39,7 +39,7 @@ Register Page
 Post Page
 ![Example screenshot](/img/post.png)
 Profile Page
-![Example screenshot](/img)
+![Example screenshot](/img/ProfilePage.png)
 
 ## Built With
 -HTML
