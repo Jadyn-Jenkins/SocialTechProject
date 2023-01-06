@@ -198,7 +198,7 @@ a {
 
 #posts {
   width: 700px;
-  height: 92.3vh;
+  height: 865px;
   display: flex;
   flex-direction: column;
   margin-top: 1em;
@@ -248,7 +248,7 @@ a {
   display: flex;
 }
 #likeIcon {
-  /* background-image: url(/img/like.png); */
+  background-image: url(/img/like.png);
   width: 25px;
   height: 25px;
   background-size: 25px 25px;
